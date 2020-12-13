@@ -1,0 +1,110 @@
+package com.hemebiotech.analytics;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AnalyticsCounter {
+
+	
+	public static void main(String args[]) throws Exception {
+		// la version laborieuse
+		int headacheCount = 0;
+		int rashCount = 0;
+		int dialatedPupilCount = 0;
+		int anxietyCount = 0;
+		int feverCount = 0;
+		int dryMouthCount = 0;
+		int inflamationCount = 0;
+		int stomachPainCount = 0;
+		int highBloodPressureCount = 0;
+		int stiffNeckCount;
+		int coughCount;
+		int insomniaCount;
+		int constrictedPupilsCount;
+		int nauseaCount;
+		int shortnessOfBreathCount;
+		int blurredVisionCount;
+		int dizzinessCount;
+		int lowBloodPressureCount;
+		int arrhythmiasCount;
+		int waterRetentionCount;
+		int blindnessCount;
+		int rapidHeartRateCount;
+		int counts = 0;
+		
+
+
+		Map<String, Integer> results = new HashMap<String, Integer>();
+        ArrayList<String> count = new ArrayList<>();
+
+		
+		//lecture du fichier txt
+		try(BufferedReader bufferedReader = new BufferedReader(new FileReader("symptoms.txt"))){
+			
+		String line = null;
+		while((line = bufferedReader.readLine()) !=null) {
+			
+//tentative decompte
+			for (String fever : count) {
+				Integer previousAmount = results.get(fever);
+				if(previousAmount == null) 
+					results.put(fever, 1); 
+				else
+					results.put(fever, previousAmount + 1);
+			
+			}
+			
+//			
+			results.put(line, counts);
+
+			
+			//le systeme a automatiser en interface ?
+			if (line.equals("headache")) {
+				headacheCount++;
+			}
+			if (line.equals("rash")) { //pas rush
+				rashCount++;
+			}
+			if (line.contains("dialated pupils")) {
+				dialatedPupilCount++;
+			}
+			if (line.equals("anxiety")) {
+				anxietyCount++;
+			}
+			if (line.equals("fever")) {
+				feverCount++;
+			}
+			if (line.contains("dry mouth")) {
+				dryMouthCount++;
+			}
+			if (line.equals("inflamation")) {
+				inflamationCount++;
+			}
+			
+
+
+}
+
+		System.out.println("nombre de headache " + headacheCount);
+		System.out.println("nombre de rash " + rashCount);
+		System.out.println("nombre de pupilles dilatées " + dialatedPupilCount);
+		System.out.println("anxiete : " + anxietyCount);
+		System.out.println("nombre de fievre : " + feverCount);
+		System.out.println(results);
+		
+		
+		// next generate output fonctionnel
+		PrintWriter writer = new PrintWriter("results.txt", "UTF-8");
+		writer.println(results);
+		writer.close();
+	 }catch (IOException e) {
+		e.printStackTrace();
+	}
+		
+	}
+}
