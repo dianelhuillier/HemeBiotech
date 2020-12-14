@@ -104,7 +104,7 @@ public class AnalyticsCounter {
         */
 		// next generate output fonctionnel
 		try {
-		PrintWriter writer = new PrintWriter("results.txt", "UTF-8");
+		PrintWriter writer = new PrintWriter("results.out", "UTF-8");
 		writer.println(results);
 		writer.close();
 	 }catch (IOException e) {
