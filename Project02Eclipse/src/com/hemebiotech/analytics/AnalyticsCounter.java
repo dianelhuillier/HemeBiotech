@@ -2,6 +2,10 @@ package com.hemebiotech.analytics;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * @author Diane L'huillier
+ *
+ */
 public class AnalyticsCounter {
 
 
