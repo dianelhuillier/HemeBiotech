@@ -1,11 +1,18 @@
 package com.hemebiotech.analytics;
 
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Diane L'huillier
+ * @version 2.0
+ * @since 20/12/2020
+ */
 public interface ISymptomsCounter {
-	//ce que la fonction va DONNER à l'appelant : un objet de type TreeMap
-	TreeMap<String, Integer> occurences (List<String> inputFromFile);
+	
+	/**
+	 * @return the count of occurrences for each symptom
+	 */
+	TreeMap<String, Integer> occurrences (List<String> inputFromFile);
 	
 }
