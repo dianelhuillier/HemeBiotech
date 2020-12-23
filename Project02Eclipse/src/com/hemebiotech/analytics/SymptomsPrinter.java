@@ -3,21 +3,20 @@ package com.hemebiotech.analytics;
 import java.io.PrintWriter;
 import java.util.TreeMap;
 /**
- * <h2>Create new .out file and write results on it<h2>
+ * Create new .out file and write results on it
  * @author Diane L'huillier
  * @version 2.0
  */
-public class SymptomsPrinter implements ISymptomsPrinter{
+public class SymptomsPrinter implements ISymptomPrinter{
 	/**
-	 * @param symptom 
-	 * 				  Every symptoms listed
+	 * @param occurences : Every symptoms' occurrence	  
 	 */
 	@Override
-	public void output(TreeMap<String, Integer> occurences) {
+	public void output(TreeMap<String, Integer> occurrences) {
 		try(PrintWriter writer = new PrintWriter ("results.out", "UTF-8")){
-			for (String symptom : occurences.keySet()) {
-				System.out.println(symptom + " : " + occurences.get(symptom));	// We print out on terminal
-				writer.write(symptom + " : " + occurences.get(symptom) + "\n");	// We write on a file
+			for (String symptom : occurrences.keySet()) {
+				System.out.println(symptom + " : " + occurrences.get(symptom));	// We print out on terminal
+				writer.write(symptom + " : " + occurrences.get(symptom) + "\n");	// We write on a file
 			}
 			System.out.println("Results written in \"results.out\"");
 			writer.close();
@@ -25,5 +24,5 @@ public class SymptomsPrinter implements ISymptomsPrinter{
 			e.printStackTrace();
 		}
 	}
-	
+
 }
